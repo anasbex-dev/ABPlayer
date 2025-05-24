@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>OEM Video Player</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+</head>
+<body>
+
+<div class="video-wrapper">
+  <video id="video" preload="metadata" poster="" playsinline></video>
+
+  <div id="loadingOverlay">
+    <div id="lottieLoading"></div>
+  </div>
+
+  <div class="controls">
+    <button id="playBtn"><img id="playIcon" src="icons/play.png" /></button>
+    <button onclick="skip(-10)"><img src="icons/backward.png" /></button>
+    <button onclick="skip(10)"><img src="icons/forward.png" /></button>
+    <input type="range" id="progressBar" value="0">
+    <span id="timeLabel">00:00 / 00:00</span>
+    <button onclick="toggleFullscreen()"><img src="icons/fullscreen.png" /></button>
+  </div>
+</div>
+
+<script src="player.js"></script>
+</body>
+</html>
