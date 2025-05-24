@@ -1,7 +1,7 @@
 body {
   padding: 0;
   margin: 0;
-  background: #111;
+  background: transparent;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -24,6 +24,47 @@ video:-ms-fullscreen {
   height: 100% !important;
   object-fit: contain;
   background: black;
+}
+
+input[type=range] {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 8px;
+  background: transparent;
+  margin: 0 10px;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  height: 8px;
+  background: linear-gradient(90deg, #ff6a00, #ff00b8);
+  border-radius: 5px;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 16px;
+  width: 16px;
+  background: #fff; /* Warna tombol geser */
+  border-radius: 50%;
+  margin-top: -4px;
+  border: 2px solid #ff00b8; /* Optional: biar ada garis luar */
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+input[type=range]::-moz-range-track {
+  background: linear-gradient(90deg, #ff6a00, #ff00b8);
+  height: 8px;
+  border-radius: 5px;
+}
+
+input[type=range]::-moz-range-thumb {
+  height: 16px;
+  width: 16px;
+  background: #fff;
+  border-radius: 50%;
+  border: 2px solid #ff00b8;
+  cursor: pointer;
 }
 
 video {

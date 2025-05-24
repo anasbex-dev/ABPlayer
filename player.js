@@ -38,10 +38,17 @@ video.addEventListener('timeupdate', () => {
   const percent = (video.currentTime / video.duration) * 100;
   progressBar.value = percent;
   timeLabel.textContent = `${formatTime(video.currentTime)} / ${formatTime(video.duration)}`;
+  
+  // Tambahin ini buat gradient-nya
+  progressBar.style.background = `linear-gradient(90deg, #ff6a00 ${percent}%, #cccccc ${percent}%)`;
 });
 
 progressBar.addEventListener('input', () => {
-  video.currentTime = video.duration * (progressBar.value / 100);
+  const percent = progressBar.value; // Value sudah dari 0–100
+  video.currentTime = video.duration * (percent / 100);
+  
+  // Update background gradient
+  progressBar.style.background = `linear-gradient(90deg, #ff6a00 ${percent}%, #cccccc ${percent}%)`;
 });
 
 function skip(seconds) {
