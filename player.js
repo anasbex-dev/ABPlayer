@@ -5,13 +5,12 @@ const progressBar = document.getElementById('progressBar');
 const timeLabel = document.getElementById('timeLabel');
 const loadingOverlay = document.getElementById('loadingOverlay');
 
-// Load Lottie animation
 lottie.loadAnimation({
   container: document.getElementById('lottieLoading'),
   renderer: 'svg',
   loop: true,
   autoplay: true,
-  path: 'lottie/ldp.json' // Ganti ini sesuai nama file animasi lo
+  path: 'lottie/ldp.json'
 });
 
 // Fullscreen
@@ -39,15 +38,13 @@ video.addEventListener('timeupdate', () => {
   progressBar.value = percent;
   timeLabel.textContent = `${formatTime(video.currentTime)} / ${formatTime(video.duration)}`;
   
-  // Tambahin ini buat gradient-nya
   progressBar.style.background = `linear-gradient(90deg, #ff6a00 ${percent}%, #cccccc ${percent}%)`;
 });
 
 progressBar.addEventListener('input', () => {
-  const percent = progressBar.value; // Value sudah dari 0–100
+  const percent = progressBar.value;
   video.currentTime = video.duration * (percent / 100);
   
-  // Update background gradient
   progressBar.style.background = `linear-gradient(90deg, #ff6a00 ${percent}%, #cccccc ${percent}%)`;
 });
 
@@ -97,17 +94,16 @@ function resetAutoHideControls() {
   clearTimeout(controlTimeout);
   controlTimeout = setTimeout(() => {
     hideControls();
-  }, 5000); // 5 detik
+  }, 5000);
 }
 
 // Set semua listener di awal
 function setupAutoHideControls() {
   video.parentElement.addEventListener('mousemove', showControlsTemporarily);
   video.parentElement.addEventListener('click', showControlsTemporarily);
-  showControlsTemporarily(); // awal muncul dulu
+  showControlsTemporarily();
 }
 
-// Panggil setelah DOM siap
 document.addEventListener('DOMContentLoaded', () => {
   setupAutoHideControls();
 });
