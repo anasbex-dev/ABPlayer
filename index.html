@@ -2,37 +2,44 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="style.css">
+  <title>ABPlayer V2</title>
 </head>
 <body>
   <div class="video-wrapper">
-  <video id="video" preload="metadata" poster="https://i.pinimg.com/originals/b6/c5/67/b6c56763ebb300c2a928bd5ac2cafe9d.gif" playsinline></video>
+    <video id="video" preload="metadata" poster="https://i.pinimg.com/originals/b6/c5/67/b6c56763ebb300c2a928bd5ac2cafe9d.gif" playsinline></video>
+
+    <!-- Double Tap Overlay -->
+    <div id="tapLeft" class="tap-zone"></div>
+    <div id="tapRight" class="tap-zone"></div>
 
     <div id="loadingOverlay">
       <div id="lottieLoading"></div>
     </div>
+  </div>
 
-    <div class="controls">
-      <button id="playBtn">
-        <img id="playIcon" src="icons/play.png" alt="Play/Pause">
-      </button>
+  <!-- Control UI di luar video -->
+  <div class="controls">
+    <button id="playBtn">
+      <img id="playIcon" src="icons/play.png" alt="Play/Pause">
+    </button>
 
-      <button onclick="skip(-10)">
-        <img src="icons/backward.png" alt="Rewind 10s">
-      </button>
+    <button onclick="skip(-10)">
+      <img src="icons/backward.png" alt="Rewind 10s">
+    </button>
 
-      <button onclick="skip(10)">
-        <img src="icons/forward.png" alt="Forward 10s">
-      </button>
+    <button onclick="skip(10)">
+      <img src="icons/forward.png" alt="Forward 10s">
+    </button>
 
-      <input type="range" id="progressBar" value="0" min="0" max="100" step="0.1">
+    <input type="range" id="progressBar" value="0" min="0" max="100" step="0.1">
 
-      <span id="timeLabel">00:00 / 00:00</span>
+    <span id="timeLabel">00:00 / 00:00</span>
 
-      <button onclick="toggleFullscreen()">
-        <img src="icons/fullscreen.png" alt="Fullscreen">
-      </button>
-    </div>
+    <button onclick="toggleFullscreen()">
+      <img src="icons/fullscreen.png" alt="Fullscreen">
+    </button>
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.10.2/lottie.min.js"></script>

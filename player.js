@@ -107,3 +107,29 @@ function setupAutoHideControls() {
 document.addEventListener('DOMContentLoaded', () => {
   setupAutoHideControls();
 });
+
+
+// DOUBLE TAP
+let lastTapLeft = 0;
+let lastTapRight = 0;
+
+const DOUBLE_TAP_DELAY = 300; // ms
+const SKIP_DURATION = 15;
+
+document.getElementById('tapLeft').addEventListener('touchend', () => {
+  const now = new Date().getTime();
+  if (now - lastTapLeft < DOUBLE_TAP_DELAY) {
+    skip(-SKIP_DURATION);
+    showControlsTemporarily();
+  }
+  lastTapLeft = now;
+});
+
+document.getElementById('tapRight').addEventListener('touchend', () => {
+  const now = new Date().getTime();
+  if (now - lastTapRight < DOUBLE_TAP_DELAY) {
+    skip(SKIP_DURATION);
+    showControlsTemporarily();
+  }
+  lastTapRight = now;
+});
