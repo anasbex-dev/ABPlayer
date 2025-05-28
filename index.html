@@ -36,10 +36,31 @@
     <input type="range" id="progressBar" value="0" min="0" max="100" step="0.1">
 
     <span id="timeLabel">00:00 / 00:00</span>
+    
+    <button id="muteBtn"><img id="muteIcon" src="icons/volume.png" /></button>
 
     <button onclick="toggleFullscreen()">
       <img src="icons/fullscreen.png" alt="Fullscreen">
     </button>
+  </div>
+  
+   <!-- Settings Panel -->
+    <div id="settingsPanel" class="settings-panel hidden">
+      <label>Volume:
+        <input type="range" id="volumeSlider" min="0" max="1" step="0.01">
+      </label>
+      <label>Speed:
+        <select id="speedSelector">
+          <option value="0.5">0.5x</option>
+          <option value="1" selected>1x</option>
+          <option value="1.5">1.5x</option>
+          <option value="2">2x</option>
+        </select>
+      </label>
+      <label>
+        <input type="checkbox" id="themeToggle"> Dark Mode
+      </label>
+    </div>
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.10.2/lottie.min.js"></script>

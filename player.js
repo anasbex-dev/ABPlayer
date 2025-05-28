@@ -133,3 +133,44 @@ document.getElementById('tapRight').addEventListener('touchend', () => {
   }
   lastTapRight = now;
 });
+
+// Buffering - tampilkan loading jika buffering
+video.addEventListener('waiting', () => {
+  loadingOverlay.style.display = 'flex';
+});
+
+video.addEventListener('playing', () => {
+  loadingOverlay.style.display = 'none';
+});
+
+// Saat video selesai
+video.addEventListener('ended', () => {
+  playIcon.src = 'icons/play.png';
+});
+
+// Mute/Unmute Toggle
+const muteBtn = document.getElementById('muteBtn');
+const muteIcon = document.getElementById('muteIcon');
+
+muteBtn?.addEventListener('click', () => {
+  video.muted = !video.muted;
+  muteIcon.src = video.muted ? 'icons/mute.png' : 'icons/volume.png';
+});
+
+// Optional: gesture fullscreen (double tap tengah layar)
+let lastTapCenter = 0;
+document.getElementById('tapCenter')?.addEventListener('touchend', () => {
+  const now = Date.now();
+  if (now - lastTapCenter < DOUBLE_TAP_DELAY) {
+    toggleFullscreen();
+  }
+  lastTapCenter = now;
+});
+
+// Improve first play (auto focus & allow interaction)
+document.addEventListener('click', () => {
+  if (video.paused && video.readyState >= 2) {
+    video.play();
+    playIcon.src = 'icons/pause.png';
+  }
+}, { once: true });
